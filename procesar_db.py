@@ -120,5 +120,32 @@ def actualizar_carrera(carrera, id):
         midb.close()
         return retorno
 
-resultado = actualizar_carrera('Ingenieria Informatica', 1)
+#resultado = actualizar_carrera('Ingenieria Informatica', 1)
+#print(resultado)
+
+# =====================================
+# ELIMINAR ALUMNO
+#======================================
+
+def eliminar(id):
+    midb = Conexion_Db()
+    dbCursor = midb.cursor()
+
+    sql = """DELETE FROM alumnos WHERE id = %s"""
+
+    valores = (id,)
+
+    try:
+        dbCursor.execute(sql, valores)
+    except:
+        midb.rollback()
+        retorno = 1
+    else:
+        midb.commit()
+        retorno = 0
+    finally:
+        midb.close()
+        return retorno
+
+resultado = eliminar(1)
 print(resultado)
