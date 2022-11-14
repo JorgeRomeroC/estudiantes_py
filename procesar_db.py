@@ -93,5 +93,32 @@ def Listar_Por_Id(id):
         midb.close()
         return retorno
 
-resultado = Listar_Por_Id(2)
+#resultado = Listar_Por_Id(2)
+#print(resultado)
+
+# =====================================
+# ACTUALIZAR ALUMNO
+#======================================
+
+def actualizar_carrera(carrera, id):
+    midb = Conexion_Db()
+    dbCursor = midb.cursor()
+
+    sql = """UPDATE alumnos SET carrera = %s WHERE id = %s"""
+
+    valores = (carrera, id)
+
+    try:
+        dbCursor.execute(sql, valores)
+    except:
+        midb.rollback()
+        retorno = 1
+    else:
+        midb.commit()
+        retorno = 0
+    finally:
+        midb.close()
+        return retorno
+
+resultado = actualizar_carrera('Ingenieria Informatica', 1)
 print(resultado)
