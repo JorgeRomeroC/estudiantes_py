@@ -36,6 +36,62 @@ def registrar(nombre, apellido, carrera, edad):
         midb.close() # cerrar la conexion
         return retorno
 
-resultado = registrar("Jorge","Romero","Programador", 18)
+#resultado = registrar("Zoe","Romero","Diseñador grafico", 20)
 
+#print(resultado)
+
+# =====================================
+# LISTAR ALUMNOS
+#======================================
+
+def listar():
+    midb = Conexion_Db()
+    dbCursor = midb.cursor()
+
+    sql = """SELECT * FROM alumnos"""
+    #sql = """SELECT * FROM alumnos WHERE id = 1"""
+
+    try:
+        dbCursor.execute(sql)
+    except:
+        midb.rollback()
+        retorno = 1
+    else:
+        retorno = []
+        for alumno in dbCursor:
+            retorno.append(alumno)
+    finally:
+        midb.close()
+        return retorno
+
+#resultado = listar()
+#print(resultado)
+
+
+# =====================================
+# LISTAR SOLO ALUMNOS POR ID
+#======================================
+
+def Listar_Por_Id(id):
+    midb = Conexion_Db()
+    dbCursor = midb.cursor()
+
+    sql = """SELECT * FROM alumnos WHERE id = %s"""
+
+    valores = (id,)
+
+    try:
+        dbCursor.execute(sql, valores)
+    except:
+        midb.rollback()
+        retorno = 1
+    else:
+        retorno = ()
+        for alumno in dbCursor:
+            retorno = alumno
+    finally:
+        midb.close()
+        return retorno
+
+resultado = Listar_Por_Id(2)
 print(resultado)
