@@ -14,6 +14,10 @@ while True:
     print("==========================")
     print("")
 
+    #============================================
+    # PROCESO PARA REGISTRAR ALUMNO
+    #============================================
+
     if opcion == 1:
        print(" === Datos del Alumno === ")
        nombre = input("Nombre: ").strip().capitalize()
@@ -28,10 +32,18 @@ while True:
        else:
              print("=== !!! El Alumno fue regsitrado correctamente ¡¡¡ ===")
 
+    # ============================================
+    # PROCESO PARA LISTAR ALUMNO
+    # ============================================
+
     elif opcion == 2:
         print(" === Listar Alumnos === ")
         resultado = modulo.listar()
         print(resultado)
+
+    # ============================================
+    # PROCESO PARA BUSCAR ALUMNO POR ID
+    # ============================================
 
     elif opcion == 3:
         print(" === Buscar Alumno === ")
@@ -44,6 +56,10 @@ while True:
             print("=== No existe un alumno con ese ID")
         else:
             print(resultado)
+
+    # ============================================
+    # PROCESO PARA ACTUALIZAR ALUMNO
+    # ============================================
 
     elif opcion == 4:
         print(" === Actualizar carrera del Alumno === ")
@@ -63,6 +79,10 @@ while True:
             else:
                 print("=== El cambio de carrera fue exitoso")
 
+    # ============================================
+    # PROCESO PARA ELIMINAR ALUMNO
+    # ============================================
+
     elif opcion == 5:
         print(" === Eliminar Alumno === ")
         id = int(input("Ingrese el ID del alumno: ").strip())
@@ -78,6 +98,11 @@ while True:
                 print("=== Error al eliminar alumno===")
             else:
                 print("=== El alumno fue eliminado correctamente de la DB")
+
+
+    # ============================================
+    # PROCESO PARA CERRAR SISTEMA ALUMNO
+    # ============================================
 
     elif opcion == 6:
         print("======= Sistema Cerrado ========")
