@@ -147,5 +147,5 @@ def eliminar(id):
         midb.close()
         return retorno
 
-resultado = eliminar(1)
-print(resultado)
+#resultado = eliminar(1)
+#print(resultado)
